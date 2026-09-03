@@ -1,0 +1,58 @@
+(module transfer-policy
+
+  (type AccountState
+    (Record
+      (balance Int)
+      (target-balance Int)
+      (amount Int)
+      (enabled Bool)
+      (frozen Bool)))
+
+  (type TransferEvidence
+    (Record
+      (authorized Bool)))
+
+  (const ZERO Int 0)
+
+  (law transfer
+    (context
+      (pre AccountState)
+      (post AccountState)
+      (evidence TransferEvidence))
+
+    (invariant-pre pre-balances-valid
+      (and
+        (>= (pre balance) ZERO)
+        (>= (pre target-balance) ZERO)))
+
+    (forbids account-frozen
+      (= (pre frozen) true))
+
+    (requires account-enabled
+      (= (pre enabled) true))
+
+    (requires authorization-present
+      (= (evidence authorized) true))
+
+    (requires amount-positive
+      (> (pre amount) ZERO))
+
+    (requires sufficient-balance
+      (>= (pre balance) (pre amount)))
+
+    (ensures source-debited
+      (= (post balance)
+         (- (pre balance) (pre amount))))
+
+    (ensures target-credited
+      (= (post target-balance)
+         (+ (pre target-balance) (pre amount))))
+
+    (invariant-transition value-conserved
+      (= (+ (pre balance) (pre target-balance))
+         (+ (post balance) (post target-balance))))
+
+    (invariant-post post-balances-valid
+      (and
+        (>= (post balance) ZERO)
+        (>= (post target-balance) ZERO)))))
