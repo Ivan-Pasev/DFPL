@@ -14,9 +14,25 @@
 - [x] §9 Decision Certificates — freeze candidate
 - [x] §10 Conformance, Security, Versioning, and Migration — freeze candidate
 - [x] §11 N-0 Registry Freeze, Machine-Readable Corpus, and Release Manifest — freeze candidate
-- [ ] §12 Evidence Closure, Independent Encoder Reproduction, and N0-RC Adjudication — current
+- [x] §12 Evidence Closure, Independent Encoder Reproduction, and N0-RC Adjudication — evidence gate defined
 
-**N-0 remains unsealed.** The public repo now contains candidate machine-readable tag/domain/Unicode registries, an N-0 corpus manifest and a candidate release manifest. These are constitutional inputs, not execution evidence.
+**Current N-0 adjudication: `HOLD_EVIDENCE_INCOMPLETE`.** N-0 remains unsealed and is not N0-RC. Candidate registries, a machine-readable KernelDescriptor structure, corpus manifest and first cross-class vector pack now exist; reproducible C0–C5 E2 and independent C3 reproduction do not.
+
+## Immediate N-0 evidence campaign
+
+- [x] candidate tag/domain/Unicode registries
+- [x] candidate machine-readable KernelDescriptor structure
+- [x] N-0 corpus manifest bound to descriptor
+- [x] first materialized C0–C5 vector pack
+- [ ] freeze complete mandatory vector set
+- [ ] complete §8 encoder in Implementation A
+- [ ] execute reproducible C0–C5 campaign
+- [ ] produce machine-readable Implementation A evidence report
+- [ ] build independent Implementation B encoder
+- [ ] reproduce mandatory C3 bytes/IDs independently
+- [ ] derive/reproduce KernelDescriptor bytes and KernelID
+- [ ] differential comparison/adjudication ledger
+- [ ] N0-RC adjudication package
 
 ## Formalization
 
@@ -30,11 +46,11 @@
 - [ ] Decision-certificate binding/projection properties
 - [ ] Conformance/migration properties
 - [ ] Registry uniqueness/domain separation properties
-- [ ] Projection obligations
+- [ ] Evidence-gate soundness properties
 
 ## Experimental frontend / reference path
 
-Private `DFPL-LAB/frontend-rs` remains experimental against §§0–11:
+Private `DFPL-LAB/frontend-rs` remains experimental against §§0–12. Repository source is not execution evidence.
 
 - [x] S-expression parser scaffold
 - [x] basic Canonical IR structures
@@ -45,19 +61,16 @@ Private `DFPL-LAB/frontend-rs` remains experimental against §§0–11:
 - [x] §7 Verdict/VerdictClass structural prototype
 - [x] initial §8 encoder scaffold for selected primitives
 - [x] §9 DecisionCertificate structural prototype
-- [x] public candidate tag/domain/Unicode registry files
-- [x] public N-0 corpus/release manifest skeletons
+- [x] G1 mirror of candidate tag/domain registry constants
 - [ ] full DFPL-S0 lexer
 - [ ] name/type/schema resolution
 - [ ] phase/static checker
 - [ ] complete normalization
 - [ ] §6 evaluator prototype
 - [ ] complete §8 canonical encoder
-- [ ] machine-readable KernelDescriptor/profile registry
-- [ ] materialized mandatory byte/hash/certificate vectors
+- [ ] descriptor encoder/KernelID derivation
 - [ ] reproducible C0–C5/E2 build/test evidence
 - [ ] independent C3 byte/ID reproduction
-- [ ] N0-RC adjudication package
 
 No public conformance claim exists yet. G2/E2 requires reproducible execution evidence, not repository presence alone.
 
@@ -93,11 +106,11 @@ Promotion requires private-lab evidence gates and conformance fixtures.
 - [x] §6 Runtime Conformance and Reference Profile — freeze candidate
 - [x] §7 Runtime Artifact Identities, Event/Trace Model, and Cross-Runtime Handoff Conformance — freeze candidate
 - [x] §8 RP0 Machine-Readable Event/Handoff Corpus and Reference Runtime Execution Evidence — freeze candidate
-- [ ] §9 RP0 Reference Runtime Adjudication, Cross-Backend Reproduction, and Promotion Decision — current
+- [x] §9 RP0 Reference Runtime Adjudication, Cross-Backend Reproduction, and Promotion Decision — evidence gate defined
 
-### RP0 reference-runtime implementation target
+**Current RP0 adjudication: `HOLD_HARNESS_INCOMPLETE`.** No R1/R2 claim exists.
 
-`PRIMA-RP0-DURABLE-MAILBOX-v1` now has a public machine-readable corpus manifest and evidence contract:
+### RP0 reference-runtime evidence campaign
 
 - [ ] durable mailbox/store schema
 - [ ] canonical MessageID/EventID/CheckpointID/HandoffID implementation
@@ -112,7 +125,9 @@ Promotion requires private-lab evidence gates and conformance fixtures.
 - [ ] deterministic mock effect adapter
 - [ ] failure injector F0..F12
 - [x] public RP0 corpus manifest skeleton
-- [ ] materialized RP0 runtime/event/handoff vectors
+- [ ] materialized F0..F12 vectors
+- [ ] Backend A reproducible campaign
+- [ ] Backend B reproduction
 - [ ] cross-runtime handoff harness
 - [ ] R1 durable-local PASS_REPRODUCED evidence
 - [ ] R2 failure-recovery PASS_REPRODUCED evidence
