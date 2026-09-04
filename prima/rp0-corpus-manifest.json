@@ -1,13 +1,16 @@
 {
   "runtime_profile_id": "PRIMA-RP0-DURABLE-MAILBOX-v1",
-  "corpus_version": "RP0-CORPUS-CANDIDATE-1",
-  "status": "DRAFT_UNVERIFIED",
+  "corpus_version": "RP0-CORPUS-CANDIDATE-2",
+  "status": "PARTIALLY_EXECUTED_MODEL_ONLY",
   "schema_refs": [
     "prima/05-runtime-profiles-messaging-persistence.md",
     "prima/06-runtime-conformance-reference-profile.md",
     "prima/07-runtime-artifact-identities-handoff.md",
-    "prima/08-rp0-corpus-execution-evidence.md"
+    "prima/08-rp0-corpus-execution-evidence.md",
+    "prima/09-rp0-adjudication-promotion.md",
+    "prima/10-executable-rp0-campaign.md"
   ],
+  "vector_refs": ["prima/vectors/rp0-failure-candidate-0001.json"],
   "failure_points": ["F0", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12"],
   "required_vector_families": [
     "message-id-redelivery",
@@ -33,8 +36,15 @@
   ],
   "required_classes": ["R1-DURABLE-LOCAL", "R2-FAILURE-RECOVERY"],
   "evidence_status_values": ["NOT_RUN", "FAIL", "PASS_SINGLE_ENV", "PASS_REPRODUCED", "PASS_DIFFERENTIAL", "SKIPPED_WITH_REASON"],
+  "observed_nonconformance_evidence": {
+    "model_status": "REPRODUCED_MODEL_EVIDENCE_NOT_R1_R2",
+    "private_evidence_ref": "DFPL-LAB/evidence/rp0-model-e2-2026-09-04.json",
+    "note": "The deterministic persisted-state model executed F0-F12 twice successfully, but it is not a transactional durable runtime/backend and cannot support R1/R2."
+  },
   "known_gaps": [
-    "reference runtime harness not yet executed reproducibly",
+    "real transactional durable mailbox/store Backend A not yet implemented",
+    "process-style crash/reopen F0-F12 campaign not yet executed",
+    "Backend B reproduction not yet executed",
     "canonical runtime artifact IDs not yet independently reproduced",
     "cross-runtime handoff harness not yet executed",
     "R1/R2 conformance not claimed"
