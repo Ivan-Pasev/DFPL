@@ -1,0 +1,24 @@
+{
+  "registry_id": "DFPL-N0-DOMAINS-CANDIDATE-1",
+  "status": "CANDIDATE_UNVERIFIED",
+  "encoding": "ASCII bytes plus terminal 0x00",
+  "domains": {
+    "kernel": "DFPL-KERNEL-v1\\0",
+    "type": "DFPL-TYPE-v1\\0",
+    "law": "DFPL-LAW-v1\\0",
+    "plan": "DFPL-PLAN-v1\\0",
+    "capability": "DFPL-CAP-v1\\0",
+    "authorization": "DFPL-AUTH-v1\\0",
+    "decision": "DFPL-DECISION-v1\\0",
+    "receipt": "DFPL-RECEIPT-v1\\0",
+    "checkpoint": "DFPL-CHECKPOINT-v1\\0",
+    "message": "PRIMA-MESSAGE-v1\\0",
+    "runtime_event": "PRIMA-EVENT-v1\\0",
+    "runtime_handoff": "PRIMA-HANDOFF-v1\\0",
+    "release_manifest": "DFPL-RELEASE-MANIFEST-v1\\0",
+    "corpus_manifest": "DFPL-CORPUS-v1\\0",
+    "evidence_report": "DFPL-EVIDENCE-v1\\0"
+  },
+  "hash_algorithm": "SHA-256",
+  "rule": "Domain literals are byte-exact and non-aliasing; wrong-domain hashing is an identity error."
+}
