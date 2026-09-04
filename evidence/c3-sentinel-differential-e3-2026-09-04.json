@@ -1,0 +1,45 @@
+{
+  "evidence_id": "DFPL-C3-SENTINEL-DIFFERENTIAL-E3-2026-09-04",
+  "status": "DIFFERENTIAL_E3_SENTINEL_SUBSET",
+  "scope": "Eight C3 primitive/Int/ASCII-Text vectors only",
+  "implementation_a": {
+    "repository": "Ivan-Pasev/DFPL-LAB",
+    "path": "frontend-rs",
+    "commit": "19ee1da1b759f8924c817722603b2a82ade9c4bc",
+    "workflow_run_id": 33915339321,
+    "successful_job_ids": [101161083190, 101161621036],
+    "language": "Rust",
+    "toolchain": "rustc/cargo 1.98.0"
+  },
+  "implementation_b": {
+    "repository": "Ivan-Pasev/DFPL",
+    "path": "tools/independent_encoder_b.py",
+    "commit": "91a29c007b2fa6ac2a051261338ddff6922d3d70",
+    "workflow_run_id": 33915300112,
+    "job_id": 101160958426,
+    "language": "Python",
+    "toolchain": "Python 3.12.3",
+    "independence_statement": "Implementation B was derived from public §8 and public candidate registries and does not import, link or copy Implementation A's Rust encoder logic."
+  },
+  "matches": [
+    {"vector_id":"C3-ENCODE-BOOL-FALSE-0001","bytes_hex":"0100"},
+    {"vector_id":"C3-ENCODE-BOOL-TRUE-0001","bytes_hex":"0101"},
+    {"vector_id":"C3-ENCODE-BYTES-0001","bytes_hex":"030000000000000002aabb"},
+    {"vector_id":"C3-ENCODE-TEXT-ASCII-0001","bytes_hex":"04000000000000000141"},
+    {"vector_id":"C3-ENCODE-INT-ZERO-0001","bytes_hex":"02000000000000000000"},
+    {"vector_id":"C3-ENCODE-INT-POS-ONE-0001","bytes_hex":"0200000000000000000101"},
+    {"vector_id":"C3-ENCODE-INT-NEG-ONE-0001","bytes_hex":"0201000000000000000101"},
+    {"vector_id":"C3-ENCODE-INT-2POW128-0001","bytes_hex":"020000000000000000110100000000000000000000000000000000"}
+  ],
+  "excluded_from_e3": [
+    {
+      "vector_id": "C3-ENCODE-TEXT-NFC-0001",
+      "reason": "Implementation A does not yet implement the Kernel-pinned Unicode normalization profile; B-only E2 evidence does not satisfy differential independence."
+    }
+  ],
+  "limitations": [
+    "This is not complete C3 conformance.",
+    "Option/List/Set/Map/Record, Ref/LocalRef, expressions, Verdict encoding, LawIR, KernelDescriptor/KernelID, LawID, DecisionCertificate/DecisionID and decoder rejection remain outside this report.",
+    "N0-RC and N0-SEALED remain unjustified."
+  ]
+}
