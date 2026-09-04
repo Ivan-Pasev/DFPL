@@ -1,0 +1,37 @@
+{
+  "corpus_version": "N0-CORPUS-CANDIDATE-1",
+  "status": "DRAFT_UNVERIFIED",
+  "kernel_descriptor_ref": "registry/TBD-kernel-descriptor.json",
+  "registry_refs": [
+    "registry/n0-tag-registry.json",
+    "registry/n0-domain-registry.json",
+    "registry/n0-unicode-profile.json"
+  ],
+  "required_conformance_classes": ["C0-PARSE", "C1-STATIC", "C2-NORMALIZE", "C3-ENCODE", "C4-EVALUATE", "C5-CERTIFICATE"],
+  "vector_families": [
+    "parser",
+    "static",
+    "normalization",
+    "primitive-values",
+    "unicode",
+    "collections",
+    "refs-alpha",
+    "expressions",
+    "verdicts",
+    "canonical-encoding",
+    "kernel-law-ids",
+    "decision-certificates",
+    "decoder-rejection",
+    "supported-domain-resource",
+    "projection-profiles"
+  ],
+  "vector_status_values": ["DRAFT_UNVERIFIED", "CANDIDATE_SINGLE_IMPLEMENTATION", "REPRODUCED_E2", "DIFFERENTIAL_E3", "MECHANIZED_E4", "RETIRED"],
+  "canonical_vector_order": "ascending normalized vector_id UTF-8 bytes",
+  "known_gaps": [
+    "KernelDescriptor machine-readable file not yet frozen",
+    "mandatory vector set not yet fully materialized",
+    "expected canonical bytes/IDs not independently reproduced",
+    "no C0-C5 E2 implementation report yet"
+  ],
+  "corpus_digest": null
+}
