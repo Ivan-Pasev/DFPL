@@ -1,0 +1,67 @@
+{
+  "descriptor_id": "DFPL-N0-KERNEL-DESCRIPTOR-CANDIDATE-1",
+  "status": "CANDIDATE_UNVERIFIED",
+  "kernel_profile": "DFPL-N0",
+  "specification_sections": [
+    "spec/00-boundary.md",
+    "spec/01-types.md",
+    "spec/02-syntax.md",
+    "spec/03-static-semantics.md",
+    "spec/04-law-ir.md",
+    "spec/05-normalization.md",
+    "spec/06-dynamic-semantics.md",
+    "spec/07-decision-algebra.md",
+    "spec/08-canonical-encoding-ids.md",
+    "spec/09-decision-certificates.md",
+    "spec/10-conformance-security-versioning.md",
+    "spec/11-n0-registry-corpus-release.md"
+  ],
+  "registry_refs": {
+    "tags": "registry/n0-tag-registry.json",
+    "domains": "registry/n0-domain-registry.json",
+    "unicode": "registry/n0-unicode-profile.json"
+  },
+  "semantic_profiles": {
+    "grammar": "DFPL-S0-CANDIDATE-1",
+    "types": "DFPL-N0-TYPES-CANDIDATE-1",
+    "static_semantics": "DFPL-N0-STATIC-CANDIDATE-1",
+    "normalization": "DFPL-N0-NORMALIZATION-CANDIDATE-1",
+    "law_ir": "DFPL-N0-LAWIR-CANDIDATE-1",
+    "encoding": "DFPL-N0-ENCODING-CANDIDATE-1",
+    "dynamic_semantics": "DFPL-N0-DYNAMIC-CANDIDATE-1",
+    "decision_algebra": "DFPL-N0-DECISION-CANDIDATE-1",
+    "decision_certificate": "DFPL-N0-CERTIFICATE-CANDIDATE-1"
+  },
+  "hash_profile": {
+    "algorithm": "SHA-256",
+    "domain_registry_ref": "registry/n0-domain-registry.json"
+  },
+  "integer_semantics": "mathematical-unbounded",
+  "float_in_core": false,
+  "text_profile_ref": "registry/n0-unicode-profile.json",
+  "evaluation_model": {
+    "pure": true,
+    "first_failure": true,
+    "phase_order": [
+      "schema-input-validation",
+      "pre-invariants",
+      "prohibitions",
+      "requirements",
+      "postconditions",
+      "post-invariants",
+      "transition-invariants",
+      "accept"
+    ]
+  },
+  "conformance_classes_required_for_n0_rc": [
+    "C0-PARSE",
+    "C1-STATIC",
+    "C2-NORMALIZE",
+    "C3-ENCODE",
+    "C4-EVALUATE",
+    "C5-CERTIFICATE"
+  ],
+  "corpus_ref": "conformance/n0-corpus-manifest.json",
+  "kernel_id": null,
+  "note": "This is a candidate descriptor structure. kernel_id remains null until descriptor canonical bytes and all referenced normative registry identities are frozen and independently reproduced."
+}
