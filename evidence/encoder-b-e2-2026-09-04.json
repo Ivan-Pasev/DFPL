@@ -1,0 +1,49 @@
+{
+  "evidence_id": "DFPL-ENCODER-B-E2-2026-09-04",
+  "status": "REPRODUCED_E2_SENTINEL_SUBSET",
+  "implementation": {
+    "name": "independent-encoder-b-python",
+    "path": "tools/independent_encoder_b.py",
+    "commit": "e813a9320a8a1fa4d658e385adc44c6a1ca2b763",
+    "independence_statement": "Derived from public DFPL §8 and public candidate registries; does not import/link/copy DFPL-LAB Rust encoder logic."
+  },
+  "environment": {
+    "os": "Ubuntu 24.04.4 LTS",
+    "runner_image": "ubuntu-24.04",
+    "runner_image_version": "20260831.293.1",
+    "python": "3.12.3"
+  },
+  "command": "python -m unittest -v tests.test_encoder_b",
+  "runs": [
+    {
+      "workflow_run_id": 33914916546,
+      "run_attempt": 1,
+      "job_id": 101159746666,
+      "conclusion": "success",
+      "tests": 4,
+      "failed": 0
+    },
+    {
+      "workflow_run_id": 33914916546,
+      "run_attempt": 2,
+      "job_id": 101160248818,
+      "conclusion": "success",
+      "tests": 4,
+      "failed": 0
+    }
+  ],
+  "covered_sentinel_properties": [
+    "Bool false/true candidate bytes",
+    "Bytes length framing candidate bytes",
+    "ASCII Text candidate bytes",
+    "arbitrary-precision Int 0/+1/-1/2^128 candidate bytes",
+    "noncanonical decimal integer rejection",
+    "NFC normalization equivalence for é / e+combining-acute"
+  ],
+  "limitations": [
+    "This is E2 only for the exercised sentinel subset, not C3 as a whole.",
+    "Unicode normalization used Python unicodedata; exact Unicode 15.1 table pinning is not independently established by this run.",
+    "No KernelDescriptor/KernelID, LawIR, LawID or DecisionID reproduction is included.",
+    "This report does not establish N0-RC, C6 conformance, or N0 sealing."
+  ]
+}
