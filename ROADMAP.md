@@ -13,9 +13,10 @@
 - [x] §8 Canonical encoding and IDs — freeze candidate
 - [x] §9 Decision Certificates — freeze candidate
 - [x] §10 Conformance, Security, Versioning, and Migration — freeze candidate
-- [ ] §11 N-0 Registry Freeze, Machine-Readable Corpus, and Release Manifest — current
+- [x] §11 N-0 Registry Freeze, Machine-Readable Corpus, and Release Manifest — freeze candidate
+- [ ] §12 Evidence Closure, Independent Encoder Reproduction, and N0-RC Adjudication — current
 
-**N-0 is not sealed yet.** §10 makes sealing an evidence gate: exact registries, machine-readable corpus, reproducible C0–C5 implementation evidence, independently reproduced C3 bytes/IDs, published limitations/security assumptions and a content-addressed release manifest.
+**N-0 remains unsealed.** The public repo now contains candidate machine-readable tag/domain/Unicode registries, an N-0 corpus manifest and a candidate release manifest. These are constitutional inputs, not execution evidence.
 
 ## Formalization
 
@@ -28,11 +29,12 @@
 - [ ] Canonical encoding properties
 - [ ] Decision-certificate binding/projection properties
 - [ ] Conformance/migration properties
+- [ ] Registry uniqueness/domain separation properties
 - [ ] Projection obligations
 
 ## Experimental frontend / reference path
 
-Private `DFPL-LAB/frontend-rs` remains experimental work against §§0–10:
+Private `DFPL-LAB/frontend-rs` remains experimental against §§0–11:
 
 - [x] S-expression parser scaffold
 - [x] basic Canonical IR structures
@@ -43,16 +45,19 @@ Private `DFPL-LAB/frontend-rs` remains experimental work against §§0–10:
 - [x] §7 Verdict/VerdictClass structural prototype
 - [x] initial §8 encoder scaffold for selected primitives
 - [x] §9 DecisionCertificate structural prototype
+- [x] public candidate tag/domain/Unicode registry files
+- [x] public N-0 corpus/release manifest skeletons
 - [ ] full DFPL-S0 lexer
 - [ ] name/type/schema resolution
 - [ ] phase/static checker
 - [ ] complete normalization
 - [ ] §6 evaluator prototype
 - [ ] complete §8 canonical encoder
-- [ ] exact N-0 tag/domain/Unicode registries
-- [ ] machine-executable byte/hash/certificate corpus
+- [ ] machine-readable KernelDescriptor/profile registry
+- [ ] materialized mandatory byte/hash/certificate vectors
 - [ ] reproducible C0–C5/E2 build/test evidence
 - [ ] independent C3 byte/ID reproduction
+- [ ] N0-RC adjudication package
 
 No public conformance claim exists yet. G2/E2 requires reproducible execution evidence, not repository presence alone.
 
@@ -72,6 +77,7 @@ Promotion requires private-lab evidence gates and conformance fixtures.
 
 ## Targets
 
+- [ ] independent second encoder path
 - [ ] WASM differential conformance
 - [ ] JavaScript adapter conformance
 - [ ] EVM profiles after N-0 sealing
@@ -86,11 +92,12 @@ Promotion requires private-lab evidence gates and conformance fixtures.
 - [x] §5 Runtime Profiles, Messaging, Scheduling, and Agent State Persistence — freeze candidate
 - [x] §6 Runtime Conformance and Reference Profile — freeze candidate
 - [x] §7 Runtime Artifact Identities, Event/Trace Model, and Cross-Runtime Handoff Conformance — freeze candidate
-- [ ] §8 RP0 Machine-Readable Event/Handoff Corpus and Reference Runtime Execution Evidence — current
+- [x] §8 RP0 Machine-Readable Event/Handoff Corpus and Reference Runtime Execution Evidence — freeze candidate
+- [ ] §9 RP0 Reference Runtime Adjudication, Cross-Backend Reproduction, and Promotion Decision — current
 
 ### RP0 reference-runtime implementation target
 
-`PRIMA-RP0-DURABLE-MAILBOX-v1` is the first executable runtime claim surface:
+`PRIMA-RP0-DURABLE-MAILBOX-v1` now has a public machine-readable corpus manifest and evidence contract:
 
 - [ ] durable mailbox/store schema
 - [ ] canonical MessageID/EventID/CheckpointID/HandoffID implementation
@@ -104,9 +111,10 @@ Promotion requires private-lab evidence gates and conformance fixtures.
 - [ ] OutcomeReceipt / UnknownOutcome persistence
 - [ ] deterministic mock effect adapter
 - [ ] failure injector F0..F12
-- [ ] machine-readable RP0 runtime/event/handoff vectors
+- [x] public RP0 corpus manifest skeleton
+- [ ] materialized RP0 runtime/event/handoff vectors
 - [ ] cross-runtime handoff harness
-- [ ] R1 durable-local evidence
-- [ ] R2 failure-recovery evidence
+- [ ] R1 durable-local PASS_REPRODUCED evidence
+- [ ] R2 failure-recovery PASS_REPRODUCED evidence
 
 No RP0 conformance class is claimed until the corresponding vectors execute reproducibly.
