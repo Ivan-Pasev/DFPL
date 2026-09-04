@@ -1,0 +1,45 @@
+{
+  "release_label": "DFPL-N0-FREEZE-CANDIDATE",
+  "release_state": "N0-FREEZE-CANDIDATE",
+  "status": "UNSEALED_EVIDENCE_INCOMPLETE",
+  "kernel_descriptor_ref": null,
+  "kernel_id": null,
+  "normative_spec_refs": [
+    "spec/00-boundary.md",
+    "spec/01-types.md",
+    "spec/02-syntax.md",
+    "spec/03-static-semantics.md",
+    "spec/04-law-ir.md",
+    "spec/05-normalization.md",
+    "spec/06-dynamic-semantics.md",
+    "spec/07-decision-algebra.md",
+    "spec/08-canonical-encoding-ids.md",
+    "spec/09-decision-certificates.md",
+    "spec/10-conformance-security-versioning-migration.md",
+    "spec/11-n0-registry-corpus-release.md"
+  ],
+  "registry_refs": [
+    "registry/n0-tag-registry.json",
+    "registry/n0-domain-registry.json",
+    "registry/n0-unicode-profile.json"
+  ],
+  "corpus_ref": "conformance/n0-corpus-manifest.json",
+  "implementation_evidence": [],
+  "formal_evidence": [],
+  "security_assumptions": [
+    "SHA-256 security assumptions apply to content identity",
+    "hash identity is not semantic proof, authentication, authority, or execution evidence",
+    "Unicode normalization tables/toolchain must be pinned before sealing"
+  ],
+  "unsupported_domains": [],
+  "compatibility_migrations": [],
+  "known_open_obligations": [
+    "freeze machine-readable KernelDescriptor and profile IDs",
+    "materialize mandatory corpus vectors",
+    "obtain C0-C5 E2 reproducible implementation evidence",
+    "independently reproduce mandatory C3 bytes and IDs",
+    "record exact proof obligation status"
+  ],
+  "supersedes": null,
+  "release_manifest_id": null
+}
