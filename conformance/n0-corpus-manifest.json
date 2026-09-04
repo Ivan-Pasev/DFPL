@@ -1,7 +1,7 @@
 {
-  "corpus_version": "N0-CORPUS-CANDIDATE-1",
+  "corpus_version": "N0-CORPUS-CANDIDATE-2",
   "status": "DRAFT_UNVERIFIED",
-  "kernel_descriptor_ref": "registry/TBD-kernel-descriptor.json",
+  "kernel_descriptor_ref": "registry/n0-kernel-descriptor.candidate.json",
   "registry_refs": [
     "registry/n0-tag-registry.json",
     "registry/n0-domain-registry.json",
@@ -25,12 +25,15 @@
     "supported-domain-resource",
     "projection-profiles"
   ],
+  "vector_refs": [
+    "conformance/vectors/n0-core-candidate-0001.json"
+  ],
   "vector_status_values": ["DRAFT_UNVERIFIED", "CANDIDATE_SINGLE_IMPLEMENTATION", "REPRODUCED_E2", "DIFFERENTIAL_E3", "MECHANIZED_E4", "RETIRED"],
   "canonical_vector_order": "ascending normalized vector_id UTF-8 bytes",
   "known_gaps": [
-    "KernelDescriptor machine-readable file not yet frozen",
-    "mandatory vector set not yet fully materialized",
-    "expected canonical bytes/IDs not independently reproduced",
+    "candidate KernelDescriptor exists but canonical descriptor bytes/KernelID are not reproduced",
+    "mandatory vector set is only partially materialized",
+    "expected canonical bytes/IDs are not independently reproduced",
     "no C0-C5 E2 implementation report yet"
   ],
   "corpus_digest": null
