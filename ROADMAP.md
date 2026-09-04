@@ -9,8 +9,8 @@
 - [x] §4 Canonical Law IR — freeze candidate
 - [x] §5 Normalization — freeze candidate
 - [x] §6 Dynamic semantics — freeze candidate
-- [ ] §7 Detailed decision algebra — current
-- [ ] §8 Canonical encoding and IDs
+- [x] §7 Detailed decision algebra — freeze candidate
+- [ ] §8 Canonical encoding and IDs — current
 - [ ] §9 Decision Certificates
 - [ ] §10 Conformance, security, versioning
 
@@ -21,12 +21,13 @@
 - [ ] Canonical Law IR
 - [ ] Normalization termination/idempotence
 - [ ] Expression/Law evaluation determinism
+- [ ] Decision-algebra projection proofs
 - [ ] Canonical encoding properties
 - [ ] Projection obligations
 
 ## Experimental frontend / reference path
 
-Private `DFPL-LAB/frontend-rs` has begun as G1 experimental work against §§0–6:
+Private `DFPL-LAB/frontend-rs` remains G1 experimental work against §§0–7:
 
 - [x] S-expression parser scaffold
 - [x] basic Canonical IR structures
@@ -39,9 +40,10 @@ Private `DFPL-LAB/frontend-rs` has begun as G1 experimental work against §§0�
 - [ ] phase/static checker
 - [ ] complete normalization
 - [ ] §6 evaluator prototype
+- [ ] §7 Verdict/VerdictClass prototype
 - [ ] reproducible build/test evidence
 
-No public conformance claim exists yet.
+No public conformance claim exists yet. G2 requires reproducible execution evidence, not repository presence alone.
 
 ## Public reference implementation
 
@@ -50,6 +52,7 @@ No public conformance claim exists yet.
 - [ ] static checker
 - [ ] normalizer
 - [ ] evaluator
+- [ ] decision algebra
 - [ ] canonical encoder
 - [ ] certificate layer
 
@@ -67,5 +70,6 @@ Promotion requires private-lab evidence gates and conformance fixtures.
 - [x] §1 PlanIR and Effect Algebra — freeze candidate
 - [x] §2 Capability and Authorization Model — freeze candidate
 - [x] §3 Effect Gateway and Outcome Semantics — freeze candidate
-- [ ] §4 Agent, Supervision, and Recursive Process Semantics — current
+- [x] §4 Agent, Supervision, and Recursive Process Semantics — freeze candidate
+- [ ] §5 Runtime Profiles, Messaging, Scheduling, and Agent State Persistence — current
 - [ ] runtime/profile conformance
