@@ -1,6 +1,6 @@
 {
   "vector_pack_id": "DFPL-N0-CORE-CANDIDATE-0001",
-  "status": "DRAFT_UNVERIFIED",
+  "status": "PARTIALLY_REPRODUCED",
   "kernel_descriptor_ref": "registry/n0-kernel-descriptor.candidate.json",
   "vectors": [
     {
@@ -41,8 +41,8 @@
       "object_kind": "Bool",
       "input": false,
       "expected_bytes_hex": "0100",
-      "status": "DRAFT_UNVERIFIED",
-      "note": "Expected from candidate §8 framing plus tag registry; not reproduction evidence."
+      "status": "REPRODUCED_E2",
+      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
     },
     {
       "vector_id": "C3-ENCODE-BOOL-TRUE-0001",
@@ -50,8 +50,44 @@
       "object_kind": "Bool",
       "input": true,
       "expected_bytes_hex": "0101",
-      "status": "DRAFT_UNVERIFIED",
-      "note": "Expected from candidate §8 framing plus tag registry; not reproduction evidence."
+      "status": "REPRODUCED_E2",
+      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
+    },
+    {
+      "vector_id": "C3-ENCODE-INT-ZERO-0001",
+      "class": "C3-ENCODE",
+      "object_kind": "Int",
+      "input_decimal": "0",
+      "expected_bytes_hex": "02000000000000000000",
+      "status": "REPRODUCED_E2",
+      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
+    },
+    {
+      "vector_id": "C3-ENCODE-INT-POS-ONE-0001",
+      "class": "C3-ENCODE",
+      "object_kind": "Int",
+      "input_decimal": "1",
+      "expected_bytes_hex": "0200000000000000000101",
+      "status": "REPRODUCED_E2",
+      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
+    },
+    {
+      "vector_id": "C3-ENCODE-INT-NEG-ONE-0001",
+      "class": "C3-ENCODE",
+      "object_kind": "Int",
+      "input_decimal": "-1",
+      "expected_bytes_hex": "0201000000000000000101",
+      "status": "REPRODUCED_E2",
+      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
+    },
+    {
+      "vector_id": "C3-ENCODE-INT-2POW128-0001",
+      "class": "C3-ENCODE",
+      "object_kind": "Int",
+      "input_decimal": "340282366920938463463374607431768211456",
+      "expected_bytes_hex": "020000000000000000110100000000000000000000000000000000",
+      "status": "REPRODUCED_E2",
+      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
     },
     {
       "vector_id": "C3-ENCODE-BYTES-0001",
@@ -59,7 +95,8 @@
       "object_kind": "Bytes",
       "input_hex": "aabb",
       "expected_bytes_hex": "030000000000000002aabb",
-      "status": "DRAFT_UNVERIFIED"
+      "status": "REPRODUCED_E2",
+      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
     },
     {
       "vector_id": "C3-ENCODE-TEXT-ASCII-0001",
@@ -67,7 +104,19 @@
       "object_kind": "Text",
       "input": "A",
       "expected_bytes_hex": "04000000000000000141",
-      "status": "DRAFT_UNVERIFIED"
+      "status": "REPRODUCED_E2",
+      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
+    },
+    {
+      "vector_id": "C3-ENCODE-TEXT-NFC-0001",
+      "class": "C3-ENCODE",
+      "object_kind": "Text",
+      "input": "é",
+      "equivalent_input": "e\u0301",
+      "expected_bytes_hex": "040000000000000002c3a9",
+      "status": "REPRODUCED_E2",
+      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"],
+      "note": "Python implementation used host unicodedata normalization; Unicode-table pinning remains a separate N-0 sealing requirement."
     },
     {
       "vector_id": "C4-EVALUATE-0001",
