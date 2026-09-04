@@ -14,9 +14,10 @@
 - [x] §9 Decision Certificates — freeze candidate
 - [x] §10 Conformance, Security, Versioning, and Migration — freeze candidate
 - [x] §11 N-0 Registry Freeze, Machine-Readable Corpus, and Release Manifest — freeze candidate
-- [x] §12 Evidence Closure, Independent Encoder Reproduction, and N0-RC Adjudication — evidence gate defined
+- [x] §12 Evidence Closure / N0-RC Adjudication — evidence gate defined
+- [x] §13 Executable Evidence Campaign / RC-or-Redesign checkpoint — active execution campaign
 
-**Current N-0 adjudication: `HOLD_EVIDENCE_INCOMPLETE`.** N-0 remains unsealed and is not N0-RC. Candidate registries, a machine-readable KernelDescriptor structure, corpus manifest and first cross-class vector pack now exist; reproducible C0–C5 E2 and independent C3 reproduction do not.
+**Current N-0 adjudication: `HOLD_EVIDENCE_INCOMPLETE`.** N-0 remains unsealed and is not N0-RC. The project now has real executable evidence, but only for scoped subsets.
 
 ## Immediate N-0 evidence campaign
 
@@ -24,15 +25,26 @@
 - [x] candidate machine-readable KernelDescriptor structure
 - [x] N-0 corpus manifest bound to descriptor
 - [x] first materialized C0–C5 vector pack
-- [ ] freeze complete mandatory vector set
-- [ ] complete §8 encoder in Implementation A
-- [ ] execute reproducible C0–C5 campaign
-- [ ] produce machine-readable Implementation A evidence report
-- [ ] build independent Implementation B encoder
-- [ ] reproduce mandatory C3 bytes/IDs independently
+- [x] independent Python Implementation B sentinel encoder
+- [x] repeated B E2 execution for primitive/Int/NFC sentinel subset
+- [x] repeated Rust Implementation A CI/cargo-test execution for current G1 subset
+- [x] eight primitive/Int/ASCII C3 sentinels independently matched A↔B — `DIFFERENTIAL_E3`
+- [ ] exact Unicode-profile reproduction in A and B
+- [ ] complete mandatory vector set
+- [ ] full C0 parser campaign
+- [ ] C1 name/type/schema/phase checker campaign
+- [ ] complete C2 normalization campaign
+- [ ] complete C3 composite/type/ref/expression/LawIR/ID/decoder campaign
+- [ ] C4 evaluator campaign
+- [ ] C5 certificate campaign
 - [ ] derive/reproduce KernelDescriptor bytes and KernelID
-- [ ] differential comparison/adjudication ledger
+- [ ] derive/reproduce LawID and DecisionID
 - [ ] N0-RC adjudication package
+
+Evidence:
+- `evidence/encoder-b-e2-2026-09-04.json`
+- `evidence/c3-sentinel-differential-e3-2026-09-04.json`
+- private A report: `DFPL-LAB/evidence/frontend-rs-a-e2-2026-09-04.json`
 
 ## Formalization
 
@@ -50,86 +62,69 @@
 
 ## Experimental frontend / reference path
 
-Private `DFPL-LAB/frontend-rs` remains experimental against §§0–12. Repository source is not execution evidence.
+Private `DFPL-LAB/frontend-rs` remains **G1 experimental**. It now has reproducible CI evidence over its current subset; that does not make it a full DFPL implementation or G2 automatically.
 
 - [x] S-expression parser scaffold
 - [x] basic Canonical IR structures
 - [x] deterministic clause normalization
 - [x] duplicate ClauseID rejection
 - [x] alpha-invariant `LocalRef {depth,slot,type}` representation
-- [x] first normalization golden vector
 - [x] §7 Verdict/VerdictClass structural prototype
-- [x] initial §8 encoder scaffold for selected primitives
+- [x] primitive §8 encoder including arbitrary-precision candidate Int encoding
 - [x] §9 DecisionCertificate structural prototype
-- [x] G1 mirror of candidate tag/domain registry constants
+- [x] G1 registry mirror
+- [x] reproducible GitHub Actions `cargo test` over current G1 suite
 - [ ] full DFPL-S0 lexer
 - [ ] name/type/schema resolution
 - [ ] phase/static checker
 - [ ] complete normalization
-- [ ] §6 evaluator prototype
+- [ ] full §6 evaluator
 - [ ] complete §8 canonical encoder
 - [ ] descriptor encoder/KernelID derivation
-- [ ] reproducible C0–C5/E2 build/test evidence
-- [ ] independent C3 byte/ID reproduction
-
-No public conformance claim exists yet. G2/E2 requires reproducible execution evidence, not repository presence alone.
+- [ ] full C0–C5/E2 evidence
 
 ## Public reference implementation
 
 - [ ] Rust workspace promotion from DFPL-LAB
-- [ ] parser
-- [ ] static checker
-- [ ] normalizer
-- [ ] evaluator
-- [ ] decision algebra
-- [ ] canonical encoder
-- [ ] certificate layer
+- [ ] parser/static checker/normalizer/evaluator
+- [ ] complete decision/canonical encoder/certificate layer
 - [ ] conformance report generator
 
-Promotion requires private-lab evidence gates and conformance fixtures.
+Promotion requires the private-lab gates and corpus evidence.
 
 ## Targets
 
-- [ ] independent second encoder path
+- [x] first independent second encoder path — scoped Python B sentinel implementation
+- [ ] complete independent C3 encoder
 - [ ] WASM differential conformance
 - [ ] JavaScript adapter conformance
 - [ ] EVM profiles after N-0 sealing
 
 ## PRIMA
 
-- [x] §0 Orchestration boundary — freeze candidate
-- [x] §1 PlanIR and Effect Algebra — freeze candidate
-- [x] §2 Capability and Authorization Model — freeze candidate
-- [x] §3 Effect Gateway and Outcome Semantics — freeze candidate
-- [x] §4 Agent, Supervision, and Recursive Process Semantics — freeze candidate
-- [x] §5 Runtime Profiles, Messaging, Scheduling, and Agent State Persistence — freeze candidate
-- [x] §6 Runtime Conformance and Reference Profile — freeze candidate
-- [x] §7 Runtime Artifact Identities, Event/Trace Model, and Cross-Runtime Handoff Conformance — freeze candidate
-- [x] §8 RP0 Machine-Readable Event/Handoff Corpus and Reference Runtime Execution Evidence — freeze candidate
-- [x] §9 RP0 Reference Runtime Adjudication, Cross-Backend Reproduction, and Promotion Decision — evidence gate defined
+- [x] §§0–8 freeze candidates
+- [x] §9 RP0 adjudication gate defined
+- [x] §10 Executable RP0 Campaign checkpoint — active execution campaign
 
 **Current RP0 adjudication: `HOLD_HARNESS_INCOMPLETE`.** No R1/R2 claim exists.
 
 ### RP0 reference-runtime evidence campaign
 
-- [ ] durable mailbox/store schema
-- [ ] canonical MessageID/EventID/CheckpointID/HandoffID implementation
-- [ ] stable MessageID + dedup
+- [x] materialized public F0–F12 candidate vector pack
+- [x] private deterministic persisted-state G1 model
+- [x] first single-environment RP0 model campaign — 9/9 tests PASS, all F0–F12 executable
+- [ ] real transactional durable mailbox/store Backend A
+- [ ] stable canonical runtime artifact IDs in the real harness
 - [ ] atomic local acknowledgement transaction
-- [ ] AgentState/checkpoint persistence
-- [ ] replay/authorization consumption persistence
-- [ ] budget persistence
-- [ ] lease epoch acquisition/fencing
-- [ ] execution-intent markers
-- [ ] OutcomeReceipt / UnknownOutcome persistence
-- [ ] deterministic mock effect adapter
-- [ ] failure injector F0..F12
-- [x] public RP0 corpus manifest skeleton
-- [ ] materialized F0..F12 vectors
-- [ ] Backend A reproducible campaign
+- [ ] AgentState/checkpoint/replay/authorization/budget durable stores
+- [ ] lease/fencing implementation
+- [ ] execution-intent + OutcomeReceipt/UnknownOutcome persistence
+- [ ] deterministic mock effect adapter integrated with durable store
+- [ ] process-style crash/reopen F0–F12 campaign
+- [ ] Backend A reproduced campaign
 - [ ] Backend B reproduction
 - [ ] cross-runtime handoff harness
 - [ ] R1 durable-local PASS_REPRODUCED evidence
 - [ ] R2 failure-recovery PASS_REPRODUCED evidence
 
-No RP0 conformance class is claimed until the corresponding vectors execute reproducibly.
+The passing G1 model is executable design evidence, not RP0 runtime conformance.
