@@ -1,0 +1,21 @@
+{
+  "vector_pack_id": "PRIMA-RP0-FAILURE-CANDIDATE-0001",
+  "runtime_profile_id": "PRIMA-RP0-DURABLE-MAILBOX-v1",
+  "status": "DRAFT_UNVERIFIED",
+  "vectors": [
+    {"vector_id":"RP0-F0-0001","failure_point":"F0","scenario":"crash before delivery","expected_invariants":["message remains pending","no dedup consumption","no authority consumption","no budget consumption"]},
+    {"vector_id":"RP0-F1-0001","failure_point":"F1","scenario":"crash after delivery before local transaction","expected_invariants":["message redeliverable","no durable state advancement","no authority resurrection"]},
+    {"vector_id":"RP0-F2-0001","failure_point":"F2","scenario":"crash before local commit","expected_invariants":["transaction effects absent","message remains unacked","budget unchanged"]},
+    {"vector_id":"RP0-F3-0001","failure_point":"F3","scenario":"crash after local commit before ack","expected_invariants":["redelivery deduplicates","committed state preserved","consumed authority remains consumed"]},
+    {"vector_id":"RP0-F4-0001","failure_point":"F4","scenario":"crash after ack before Plan verification","expected_invariants":["acked message remains consumed","no fabricated DecisionCertificate","agent recovery resumes from committed state"]},
+    {"vector_id":"RP0-F5-0001","failure_point":"F5","scenario":"crash after DecisionCertificate before authorization","expected_invariants":["decision artifact may persist","no authorization inferred","no effect intent exists"]},
+    {"vector_id":"RP0-F6-0001","failure_point":"F6","scenario":"crash after AuthorizationArtifact before execution-intent persistence","expected_invariants":["authorization does not imply execution","no effect attempt inferred","one-shot authority state preserved"]},
+    {"vector_id":"RP0-F7-0001","failure_point":"F7","scenario":"crash after execution intent before external submit","expected_invariants":["intent persists","effect not claimed executed","retry governed by idempotency profile"]},
+    {"vector_id":"RP0-F8-0001","failure_point":"F8","scenario":"crash after external submit before response","expected_invariants":["UnknownOutcome durable on recovery","nonidempotent effect not blindly replayed","authority remains consumed as specified"]},
+    {"vector_id":"RP0-F9-0001","failure_point":"F9","scenario":"crash after response before receipt persistence","expected_invariants":["recovery reconciles external state","success not inferred from missing receipt","UnknownOutcome may remain until reconciliation"]},
+    {"vector_id":"RP0-F10-0001","failure_point":"F10","scenario":"crash after receipt before dependent AgentState advancement","expected_invariants":["receipt frontier preserved","state may replay deterministic advancement","effect not resubmitted"]},
+    {"vector_id":"RP0-F11-0001","failure_point":"F11","scenario":"crash/corruption during checkpoint write","expected_invariants":["last valid checkpoint recoverable","corrupt checkpoint rejected","receipt/replay/budget frontiers not rolled back silently"]},
+    {"vector_id":"RP0-F12-0001","failure_point":"F12","scenario":"crash during lease takeover","expected_invariants":["new epoch fences stale owner where claimed","single active committer preserved","authority/budget frontiers unchanged by takeover"]}
+  ],
+  "promotion_note": "Passing a model harness over these vectors is not by itself R1/R2. RP0 promotion requires the full §6–§9 durable-store/runtime evidence contract and reproduced backend evidence."
+}
