@@ -16,35 +16,38 @@ VECTORS = ROOT / "conformance" / "vectors" / "n0-core-candidate-0001.json"
 
 
 class EncoderBSentinelTests(unittest.TestCase):
-    def test_public_candidate_vector_pack_primitive_bytes(self):
+    def _vectors(self):
         pack = json.loads(VECTORS.read_text(encoding="utf-8"))
-        by_id = {v["vector_id"]: v for v in pack["vectors"]}
+        return {v["vector_id"]: v for v in pack["vectors"]}
 
-        self.assertEqual(
-            hex_encode(encode_bool(False)),
-            by_id["C3-ENCODE-BOOL-FALSE-0001"]["expected_bytes_hex"],
-        )
-        self.assertEqual(
-            hex_encode(encode_bool(True)),
-            by_id["C3-ENCODE-BOOL-TRUE-0001"]["expected_bytes_hex"],
-        )
-        self.assertEqual(
-            hex_encode(encode_bytes(bytes.fromhex(by_id["C3-ENCODE-BYTES-0001"]["input_hex"]))),
-            by_id["C3-ENCODE-BYTES-0001"]["expected_bytes_hex"],
-        )
-        self.assertEqual(
-            hex_encode(encode_text(by_id["C3-ENCODE-TEXT-ASCII-0001"]["input"])),
-            by_id["C3-ENCODE-TEXT-ASCII-0001"]["expected_bytes_hex"],
-        )
+    def test_public_candidate_vector_pack_primitive_bytes(self):
+        by_id = self._vectors()
+        actual = {
+            "C3-ENCODE-BOOL-FALSE-0001": hex_encode(encode_bool(False)),
+            "C3-ENCODE-BOOL-TRUE-0001": hex_encode(encode_bool(True)),
+            "C3-ENCODE-BYTES-0001": hex_encode(
+                encode_bytes(bytes.fromhex(by_id["C3-ENCODE-BYTES-0001"]["input_hex"]))
+            ),
+            "C3-ENCODE-TEXT-ASCII-0001": hex_encode(
+                encode_text(by_id["C3-ENCODE-TEXT-ASCII-0001"]["input"])
+            ),
+        }
+        for vector_id, actual_hex in actual.items():
+            print(f"DFPL_SENTINEL_B {vector_id} {actual_hex}")
+            self.assertEqual(actual_hex, by_id[vector_id]["expected_bytes_hex"])
 
     def test_integer_sentinels(self):
-        self.assertEqual(hex_encode(encode_int_decimal("0")), "02000000000000000000")
-        self.assertEqual(hex_encode(encode_int_decimal("1")), "0200000000000000000101")
-        self.assertEqual(hex_encode(encode_int_decimal("-1")), "0201000000000000000101")
-        self.assertEqual(
-            hex_encode(encode_int_decimal("340282366920938463463374607431768211456")),
-            "020000000000000000110100000000000000000000000000000000",
-        )
+        by_id = self._vectors()
+        for vector_id in (
+            "C3-ENCODE-INT-ZERO-0001",
+            "C3-ENCODE-INT-POS-ONE-0001",
+            "C3-ENCODE-INT-NEG-ONE-0001",
+            "C3-ENCODE-INT-2POW128-0001",
+        ):
+            vector = by_id[vector_id]
+            actual_hex = hex_encode(encode_int_decimal(vector["input_decimal"]))
+            print(f"DFPL_SENTINEL_B {vector_id} {actual_hex}")
+            self.assertEqual(actual_hex, vector["expected_bytes_hex"])
 
     def test_noncanonical_integer_surface_is_rejected(self):
         for text in ("", "-0", "00", "01", "+1", "1_0", " 1", "1 "):
@@ -53,10 +56,14 @@ class EncoderBSentinelTests(unittest.TestCase):
                     parse_canonical_decimal(text)
 
     def test_nfc_text_collapses_canonically(self):
-        precomposed = "é"
-        decomposed = "e\u0301"
+        by_id = self._vectors()
+        vector = by_id["C3-ENCODE-TEXT-NFC-0001"]
+        precomposed = vector["input"]
+        decomposed = vector["equivalent_input"]
         self.assertEqual(encode_text(precomposed), encode_text(decomposed))
-        self.assertEqual(hex_encode(encode_text(precomposed)), "040000000000000002c3a9")
+        actual_hex = hex_encode(encode_text(precomposed))
+        print(f"DFPL_SENTINEL_B C3-ENCODE-TEXT-NFC-0001 {actual_hex}")
+        self.assertEqual(actual_hex, vector["expected_bytes_hex"])
 
 
 if __name__ == "__main__":
