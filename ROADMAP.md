@@ -11,8 +11,8 @@
 - [x] §6 Dynamic semantics — freeze candidate
 - [x] §7 Detailed decision algebra — freeze candidate
 - [x] §8 Canonical encoding and IDs — freeze candidate
-- [ ] §9 Decision Certificates — current
-- [ ] §10 Conformance, security, versioning
+- [x] §9 Decision Certificates — freeze candidate
+- [ ] §10 Conformance, Security, Versioning, and Migration — current
 
 ## Formalization
 
@@ -23,11 +23,12 @@
 - [ ] Expression/Law evaluation determinism
 - [ ] Decision-algebra projection proofs
 - [ ] Canonical encoding properties
+- [ ] Decision-certificate binding/projection properties
 - [ ] Projection obligations
 
 ## Experimental frontend / reference path
 
-Private `DFPL-LAB/frontend-rs` remains G1 experimental work against §§0–8:
+Private `DFPL-LAB/frontend-rs` remains G1 experimental work against §§0–9:
 
 - [x] S-expression parser scaffold
 - [x] basic Canonical IR structures
@@ -36,13 +37,15 @@ Private `DFPL-LAB/frontend-rs` remains G1 experimental work against §§0–8:
 - [x] alpha-invariant `LocalRef {depth,slot,type}` representation
 - [x] first normalization golden vector
 - [x] §7 Verdict/VerdictClass structural prototype
+- [x] initial §8 encoder scaffold for selected primitives
 - [ ] full DFPL-S0 lexer
 - [ ] name/type/schema resolution
 - [ ] phase/static checker
 - [ ] complete normalization
 - [ ] §6 evaluator prototype
-- [ ] §8 canonical encoder prototype
-- [ ] machine-executable byte/hash golden vectors
+- [ ] complete §8 canonical encoder
+- [ ] §9 DecisionCertificate prototype
+- [ ] machine-executable byte/hash/certificate golden vectors
 - [ ] reproducible build/test evidence
 
 No public conformance claim exists yet. G2 requires reproducible execution evidence, not repository presence alone.
@@ -74,4 +77,26 @@ Promotion requires private-lab evidence gates and conformance fixtures.
 - [x] §3 Effect Gateway and Outcome Semantics — freeze candidate
 - [x] §4 Agent, Supervision, and Recursive Process Semantics — freeze candidate
 - [x] §5 Runtime Profiles, Messaging, Scheduling, and Agent State Persistence — freeze candidate
-- [ ] §6 Runtime Conformance and Reference Profile — current
+- [x] §6 Runtime Conformance and Reference Profile — freeze candidate
+- [ ] §7 Runtime Artifact Identities, Event/Trace Model, and Cross-Runtime Handoff Conformance — current
+
+### RP0 reference-runtime implementation target
+
+`PRIMA-RP0-DURABLE-MAILBOX-v1` now defines the first executable runtime claim surface:
+
+- [ ] durable mailbox/store schema
+- [ ] stable MessageID + dedup
+- [ ] atomic local acknowledgement transaction
+- [ ] AgentState/checkpoint persistence
+- [ ] replay/authorization consumption persistence
+- [ ] budget persistence
+- [ ] lease epoch acquisition/fencing
+- [ ] execution-intent markers
+- [ ] OutcomeReceipt / UnknownOutcome persistence
+- [ ] deterministic mock effect adapter
+- [ ] failure injector F0..F12
+- [ ] machine-readable RP0 golden runtime vectors
+- [ ] R1 durable-local evidence
+- [ ] R2 failure-recovery evidence
+
+No RP0 conformance class is claimed until the corresponding vectors execute reproducibly.
