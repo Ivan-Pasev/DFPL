@@ -1,0 +1,26 @@
+{
+  "profile_id": "DFPL-N0-UNICODE-CANDIDATE-1",
+  "status": "CANDIDATE_UNVERIFIED",
+  "unicode_version": "15.1.0",
+  "normalization_form": "NFC",
+  "transport_encoding": "UTF-8",
+  "case_sensitive": true,
+  "locale_sensitive": false,
+  "identifier_policy": {
+    "forbid_ascii_control": true,
+    "forbid_unpaired_surrogates": true,
+    "forbid_noncharacters": true,
+    "forbid_whitespace": true,
+    "forbid_dfpl_delimiters": ["(", ")", ";", "\""],
+    "locale_case_folding": false,
+    "transliteration": false,
+    "homoglyph_merging": false,
+    "confusable_handling": "tooling-warning-only"
+  },
+  "text_policy": {
+    "reject_invalid_utf8": true,
+    "normalize_before_canonical_encoding": true,
+    "equality": "canonical Unicode scalar sequence equality after NFC"
+  },
+  "note": "Unicode tables and normalization implementation must be pinned/reproduced before N0 sealing."
+}
