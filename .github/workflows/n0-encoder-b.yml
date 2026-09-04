@@ -1,0 +1,26 @@
+name: N0 Encoder B Evidence
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'tools/independent_encoder_b.py'
+      - 'tests/test_encoder_b.py'
+      - 'conformance/vectors/n0-core-candidate-0001.json'
+      - 'registry/n0-tag-registry.json'
+      - 'registry/n0-domain-registry.json'
+      - '.github/workflows/n0-encoder-b.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sentinel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python version
+        run: python --version
+      - name: Execute independent encoder B sentinel tests
+        run: python -m unittest -v tests.test_encoder_b
