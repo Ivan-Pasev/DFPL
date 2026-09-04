@@ -1,156 +1,24 @@
 {
   "vector_pack_id": "DFPL-N0-CORE-CANDIDATE-0001",
-  "status": "PARTIALLY_REPRODUCED",
+  "status": "PARTIALLY_DIFFERENTIAL",
   "kernel_descriptor_ref": "registry/n0-kernel-descriptor.candidate.json",
   "vectors": [
-    {
-      "vector_id": "C0-PARSE-0001",
-      "class": "C0-PARSE",
-      "object_kind": "source-module",
-      "input": "(module minimal (type S (Record (enabled Bool))) (law allow (context (pre S) (post S) (evidence S)) (requires enabled (= (pre enabled) true))))",
-      "expected_result": "ACCEPT_PARSE",
-      "status": "DRAFT_UNVERIFIED"
-    },
-    {
-      "vector_id": "C0-PARSE-0002",
-      "class": "C0-PARSE",
-      "object_kind": "source-module",
-      "input": "(module broken (law x",
-      "expected_error": "UNCLOSED_LIST",
-      "status": "DRAFT_UNVERIFIED"
-    },
-    {
-      "vector_id": "C1-STATIC-0001",
-      "class": "C1-STATIC",
-      "object_kind": "phase-check",
-      "input_description": "requires clause attempts to reference post-state",
-      "expected_error": "PHASE_REFERENCE_NOT_PERMITTED",
-      "status": "DRAFT_UNVERIFIED"
-    },
-    {
-      "vector_id": "C2-NORMALIZE-0001",
-      "class": "C2-NORMALIZE",
-      "object_kind": "law-clause-order",
-      "input_description": "same typed Law with requirements emitted in opposite source order",
-      "expected_result": "IDENTICAL_LAW_IR_BODY",
-      "status": "DRAFT_UNVERIFIED"
-    },
-    {
-      "vector_id": "C3-ENCODE-BOOL-FALSE-0001",
-      "class": "C3-ENCODE",
-      "object_kind": "Bool",
-      "input": false,
-      "expected_bytes_hex": "0100",
-      "status": "REPRODUCED_E2",
-      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
-    },
-    {
-      "vector_id": "C3-ENCODE-BOOL-TRUE-0001",
-      "class": "C3-ENCODE",
-      "object_kind": "Bool",
-      "input": true,
-      "expected_bytes_hex": "0101",
-      "status": "REPRODUCED_E2",
-      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
-    },
-    {
-      "vector_id": "C3-ENCODE-INT-ZERO-0001",
-      "class": "C3-ENCODE",
-      "object_kind": "Int",
-      "input_decimal": "0",
-      "expected_bytes_hex": "02000000000000000000",
-      "status": "REPRODUCED_E2",
-      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
-    },
-    {
-      "vector_id": "C3-ENCODE-INT-POS-ONE-0001",
-      "class": "C3-ENCODE",
-      "object_kind": "Int",
-      "input_decimal": "1",
-      "expected_bytes_hex": "0200000000000000000101",
-      "status": "REPRODUCED_E2",
-      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
-    },
-    {
-      "vector_id": "C3-ENCODE-INT-NEG-ONE-0001",
-      "class": "C3-ENCODE",
-      "object_kind": "Int",
-      "input_decimal": "-1",
-      "expected_bytes_hex": "0201000000000000000101",
-      "status": "REPRODUCED_E2",
-      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
-    },
-    {
-      "vector_id": "C3-ENCODE-INT-2POW128-0001",
-      "class": "C3-ENCODE",
-      "object_kind": "Int",
-      "input_decimal": "340282366920938463463374607431768211456",
-      "expected_bytes_hex": "020000000000000000110100000000000000000000000000000000",
-      "status": "REPRODUCED_E2",
-      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
-    },
-    {
-      "vector_id": "C3-ENCODE-BYTES-0001",
-      "class": "C3-ENCODE",
-      "object_kind": "Bytes",
-      "input_hex": "aabb",
-      "expected_bytes_hex": "030000000000000002aabb",
-      "status": "REPRODUCED_E2",
-      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
-    },
-    {
-      "vector_id": "C3-ENCODE-TEXT-ASCII-0001",
-      "class": "C3-ENCODE",
-      "object_kind": "Text",
-      "input": "A",
-      "expected_bytes_hex": "04000000000000000141",
-      "status": "REPRODUCED_E2",
-      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"]
-    },
-    {
-      "vector_id": "C3-ENCODE-TEXT-NFC-0001",
-      "class": "C3-ENCODE",
-      "object_kind": "Text",
-      "input": "é",
-      "equivalent_input": "e\u0301",
-      "expected_bytes_hex": "040000000000000002c3a9",
-      "status": "REPRODUCED_E2",
-      "evidence_refs": ["evidence/encoder-b-e2-2026-09-04.json"],
-      "note": "Python implementation used host unicodedata normalization; Unicode-table pinning remains a separate N-0 sealing requirement."
-    },
-    {
-      "vector_id": "C4-EVALUATE-0001",
-      "class": "C4-EVALUATE",
-      "object_kind": "Verdict",
-      "input_description": "well-formed Law with all predicates true except no active prohibition",
-      "expected_result": "Accept",
-      "expected_verdict_class": "Permit",
-      "status": "DRAFT_UNVERIFIED"
-    },
-    {
-      "vector_id": "C4-EVALUATE-0002",
-      "class": "C4-EVALUATE",
-      "object_kind": "Verdict",
-      "input_description": "first canonical prohibition predicate evaluates true",
-      "expected_result": "Forbidden",
-      "expected_verdict_class": "Deny",
-      "status": "DRAFT_UNVERIFIED"
-    },
-    {
-      "vector_id": "C5-CERTIFICATE-0001",
-      "class": "C5-CERTIFICATE",
-      "object_kind": "DecisionCertificate",
-      "input_description": "certificate body with Verdict Accept and VerdictClass Permit",
-      "expected_result": "STRUCTURALLY_CONSISTENT",
-      "status": "DRAFT_UNVERIFIED"
-    },
-    {
-      "vector_id": "C5-CERTIFICATE-0002",
-      "class": "C5-CERTIFICATE",
-      "object_kind": "DecisionCertificate",
-      "input_description": "certificate body with Verdict Forbidden and VerdictClass Permit",
-      "expected_error": "VERDICT_CLASS_MISMATCH",
-      "status": "DRAFT_UNVERIFIED"
-    }
+    {"vector_id":"C0-PARSE-0001","class":"C0-PARSE","object_kind":"source-module","input":"(module minimal (type S (Record (enabled Bool))) (law allow (context (pre S) (post S) (evidence S)) (requires enabled (= (pre enabled) true))))","expected_result":"ACCEPT_PARSE","status":"DRAFT_UNVERIFIED"},
+    {"vector_id":"C0-PARSE-0002","class":"C0-PARSE","object_kind":"source-module","input":"(module broken (law x","expected_error":"UNCLOSED_LIST","status":"DRAFT_UNVERIFIED"},
+    {"vector_id":"C1-STATIC-0001","class":"C1-STATIC","object_kind":"phase-check","input_description":"requires clause attempts to reference post-state","expected_error":"PHASE_REFERENCE_NOT_PERMITTED","status":"DRAFT_UNVERIFIED"},
+    {"vector_id":"C2-NORMALIZE-0001","class":"C2-NORMALIZE","object_kind":"law-clause-order","input_description":"same typed Law with requirements emitted in opposite source order","expected_result":"IDENTICAL_LAW_IR_BODY","status":"DRAFT_UNVERIFIED"},
+    {"vector_id":"C3-ENCODE-BOOL-FALSE-0001","class":"C3-ENCODE","object_kind":"Bool","input":false,"expected_bytes_hex":"0100","status":"DIFFERENTIAL_E3","evidence_refs":["evidence/encoder-b-e2-2026-09-04.json","evidence/c3-sentinel-differential-e3-2026-09-04.json"]},
+    {"vector_id":"C3-ENCODE-BOOL-TRUE-0001","class":"C3-ENCODE","object_kind":"Bool","input":true,"expected_bytes_hex":"0101","status":"DIFFERENTIAL_E3","evidence_refs":["evidence/encoder-b-e2-2026-09-04.json","evidence/c3-sentinel-differential-e3-2026-09-04.json"]},
+    {"vector_id":"C3-ENCODE-INT-ZERO-0001","class":"C3-ENCODE","object_kind":"Int","input_decimal":"0","expected_bytes_hex":"02000000000000000000","status":"DIFFERENTIAL_E3","evidence_refs":["evidence/encoder-b-e2-2026-09-04.json","evidence/c3-sentinel-differential-e3-2026-09-04.json"]},
+    {"vector_id":"C3-ENCODE-INT-POS-ONE-0001","class":"C3-ENCODE","object_kind":"Int","input_decimal":"1","expected_bytes_hex":"0200000000000000000101","status":"DIFFERENTIAL_E3","evidence_refs":["evidence/encoder-b-e2-2026-09-04.json","evidence/c3-sentinel-differential-e3-2026-09-04.json"]},
+    {"vector_id":"C3-ENCODE-INT-NEG-ONE-0001","class":"C3-ENCODE","object_kind":"Int","input_decimal":"-1","expected_bytes_hex":"0201000000000000000101","status":"DIFFERENTIAL_E3","evidence_refs":["evidence/encoder-b-e2-2026-09-04.json","evidence/c3-sentinel-differential-e3-2026-09-04.json"]},
+    {"vector_id":"C3-ENCODE-INT-2POW128-0001","class":"C3-ENCODE","object_kind":"Int","input_decimal":"340282366920938463463374607431768211456","expected_bytes_hex":"020000000000000000110100000000000000000000000000000000","status":"DIFFERENTIAL_E3","evidence_refs":["evidence/encoder-b-e2-2026-09-04.json","evidence/c3-sentinel-differential-e3-2026-09-04.json"]},
+    {"vector_id":"C3-ENCODE-BYTES-0001","class":"C3-ENCODE","object_kind":"Bytes","input_hex":"aabb","expected_bytes_hex":"030000000000000002aabb","status":"DIFFERENTIAL_E3","evidence_refs":["evidence/encoder-b-e2-2026-09-04.json","evidence/c3-sentinel-differential-e3-2026-09-04.json"]},
+    {"vector_id":"C3-ENCODE-TEXT-ASCII-0001","class":"C3-ENCODE","object_kind":"Text","input":"A","expected_bytes_hex":"04000000000000000141","status":"DIFFERENTIAL_E3","evidence_refs":["evidence/encoder-b-e2-2026-09-04.json","evidence/c3-sentinel-differential-e3-2026-09-04.json"]},
+    {"vector_id":"C3-ENCODE-TEXT-NFC-0001","class":"C3-ENCODE","object_kind":"Text","input":"é","equivalent_input":"e\u0301","expected_bytes_hex":"040000000000000002c3a9","status":"REPRODUCED_E2","evidence_refs":["evidence/encoder-b-e2-2026-09-04.json"],"note":"B-only E2: Rust A does not yet implement the Kernel-pinned Unicode normalization profile; Unicode-table pinning remains open."},
+    {"vector_id":"C4-EVALUATE-0001","class":"C4-EVALUATE","object_kind":"Verdict","input_description":"well-formed Law with all predicates true except no active prohibition","expected_result":"Accept","expected_verdict_class":"Permit","status":"DRAFT_UNVERIFIED"},
+    {"vector_id":"C4-EVALUATE-0002","class":"C4-EVALUATE","object_kind":"Verdict","input_description":"first canonical prohibition predicate evaluates true","expected_result":"Forbidden","expected_verdict_class":"Deny","status":"DRAFT_UNVERIFIED"},
+    {"vector_id":"C5-CERTIFICATE-0001","class":"C5-CERTIFICATE","object_kind":"DecisionCertificate","input_description":"certificate body with Verdict Accept and VerdictClass Permit","expected_result":"STRUCTURALLY_CONSISTENT","status":"DRAFT_UNVERIFIED"},
+    {"vector_id":"C5-CERTIFICATE-0002","class":"C5-CERTIFICATE","object_kind":"DecisionCertificate","input_description":"certificate body with Verdict Forbidden and VerdictClass Permit","expected_error":"VERDICT_CLASS_MISMATCH","status":"DRAFT_UNVERIFIED"}
   ]
 }
