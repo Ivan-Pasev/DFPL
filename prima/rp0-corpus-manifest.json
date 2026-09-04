@@ -1,0 +1,43 @@
+{
+  "runtime_profile_id": "PRIMA-RP0-DURABLE-MAILBOX-v1",
+  "corpus_version": "RP0-CORPUS-CANDIDATE-1",
+  "status": "DRAFT_UNVERIFIED",
+  "schema_refs": [
+    "prima/05-runtime-profiles-messaging-persistence.md",
+    "prima/06-runtime-conformance-reference-profile.md",
+    "prima/07-runtime-artifact-identities-handoff.md",
+    "prima/08-rp0-corpus-execution-evidence.md"
+  ],
+  "failure_points": ["F0", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12"],
+  "required_vector_families": [
+    "message-id-redelivery",
+    "dedup-conflict",
+    "ack-crash",
+    "verification-authorization-crash",
+    "execution-intent-crash",
+    "ambiguous-submit",
+    "receipt-state-advance",
+    "checkpoint-corruption",
+    "lease-takeover-fencing",
+    "authority-non-resurrection",
+    "budget-persistence",
+    "unknown-outcome-reconciliation",
+    "idempotent-retry",
+    "nonidempotent-ambiguity",
+    "dead-letter-backpressure",
+    "event-causal-dag",
+    "checkpoint-frontier",
+    "handoff-state-machine",
+    "cross-runtime-frontier-preservation",
+    "handoff-tamper-replay"
+  ],
+  "required_classes": ["R1-DURABLE-LOCAL", "R2-FAILURE-RECOVERY"],
+  "evidence_status_values": ["NOT_RUN", "FAIL", "PASS_SINGLE_ENV", "PASS_REPRODUCED", "PASS_DIFFERENTIAL", "SKIPPED_WITH_REASON"],
+  "known_gaps": [
+    "reference runtime harness not yet executed reproducibly",
+    "canonical runtime artifact IDs not yet independently reproduced",
+    "cross-runtime handoff harness not yet executed",
+    "R1/R2 conformance not claimed"
+  ],
+  "corpus_digest": null
+}
