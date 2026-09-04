@@ -10,8 +10,8 @@
 - [x] §5 Normalization — freeze candidate
 - [x] §6 Dynamic semantics — freeze candidate
 - [x] §7 Detailed decision algebra — freeze candidate
-- [ ] §8 Canonical encoding and IDs — current
-- [ ] §9 Decision Certificates
+- [x] §8 Canonical encoding and IDs — freeze candidate
+- [ ] §9 Decision Certificates — current
 - [ ] §10 Conformance, security, versioning
 
 ## Formalization
@@ -27,7 +27,7 @@
 
 ## Experimental frontend / reference path
 
-Private `DFPL-LAB/frontend-rs` remains G1 experimental work against §§0–7:
+Private `DFPL-LAB/frontend-rs` remains G1 experimental work against §§0–8:
 
 - [x] S-expression parser scaffold
 - [x] basic Canonical IR structures
@@ -35,12 +35,14 @@ Private `DFPL-LAB/frontend-rs` remains G1 experimental work against §§0–7:
 - [x] duplicate ClauseID rejection
 - [x] alpha-invariant `LocalRef {depth,slot,type}` representation
 - [x] first normalization golden vector
+- [x] §7 Verdict/VerdictClass structural prototype
 - [ ] full DFPL-S0 lexer
 - [ ] name/type/schema resolution
 - [ ] phase/static checker
 - [ ] complete normalization
 - [ ] §6 evaluator prototype
-- [ ] §7 Verdict/VerdictClass prototype
+- [ ] §8 canonical encoder prototype
+- [ ] machine-executable byte/hash golden vectors
 - [ ] reproducible build/test evidence
 
 No public conformance claim exists yet. G2 requires reproducible execution evidence, not repository presence alone.
@@ -71,5 +73,5 @@ Promotion requires private-lab evidence gates and conformance fixtures.
 - [x] §2 Capability and Authorization Model — freeze candidate
 - [x] §3 Effect Gateway and Outcome Semantics — freeze candidate
 - [x] §4 Agent, Supervision, and Recursive Process Semantics — freeze candidate
-- [ ] §5 Runtime Profiles, Messaging, Scheduling, and Agent State Persistence — current
-- [ ] runtime/profile conformance
+- [x] §5 Runtime Profiles, Messaging, Scheduling, and Agent State Persistence — freeze candidate
+- [ ] §6 Runtime Conformance and Reference Profile — current
