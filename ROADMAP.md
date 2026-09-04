@@ -12,7 +12,10 @@
 - [x] §7 Detailed decision algebra — freeze candidate
 - [x] §8 Canonical encoding and IDs — freeze candidate
 - [x] §9 Decision Certificates — freeze candidate
-- [ ] §10 Conformance, Security, Versioning, and Migration — current
+- [x] §10 Conformance, Security, Versioning, and Migration — freeze candidate
+- [ ] §11 N-0 Registry Freeze, Machine-Readable Corpus, and Release Manifest — current
+
+**N-0 is not sealed yet.** §10 makes sealing an evidence gate: exact registries, machine-readable corpus, reproducible C0–C5 implementation evidence, independently reproduced C3 bytes/IDs, published limitations/security assumptions and a content-addressed release manifest.
 
 ## Formalization
 
@@ -24,11 +27,12 @@
 - [ ] Decision-algebra projection proofs
 - [ ] Canonical encoding properties
 - [ ] Decision-certificate binding/projection properties
+- [ ] Conformance/migration properties
 - [ ] Projection obligations
 
 ## Experimental frontend / reference path
 
-Private `DFPL-LAB/frontend-rs` remains G1 experimental work against §§0–9:
+Private `DFPL-LAB/frontend-rs` remains experimental work against §§0–10:
 
 - [x] S-expression parser scaffold
 - [x] basic Canonical IR structures
@@ -38,17 +42,19 @@ Private `DFPL-LAB/frontend-rs` remains G1 experimental work against §§0–9:
 - [x] first normalization golden vector
 - [x] §7 Verdict/VerdictClass structural prototype
 - [x] initial §8 encoder scaffold for selected primitives
+- [x] §9 DecisionCertificate structural prototype
 - [ ] full DFPL-S0 lexer
 - [ ] name/type/schema resolution
 - [ ] phase/static checker
 - [ ] complete normalization
 - [ ] §6 evaluator prototype
 - [ ] complete §8 canonical encoder
-- [ ] §9 DecisionCertificate prototype
-- [ ] machine-executable byte/hash/certificate golden vectors
-- [ ] reproducible build/test evidence
+- [ ] exact N-0 tag/domain/Unicode registries
+- [ ] machine-executable byte/hash/certificate corpus
+- [ ] reproducible C0–C5/E2 build/test evidence
+- [ ] independent C3 byte/ID reproduction
 
-No public conformance claim exists yet. G2 requires reproducible execution evidence, not repository presence alone.
+No public conformance claim exists yet. G2/E2 requires reproducible execution evidence, not repository presence alone.
 
 ## Public reference implementation
 
@@ -60,6 +66,7 @@ No public conformance claim exists yet. G2 requires reproducible execution evide
 - [ ] decision algebra
 - [ ] canonical encoder
 - [ ] certificate layer
+- [ ] conformance report generator
 
 Promotion requires private-lab evidence gates and conformance fixtures.
 
@@ -67,7 +74,7 @@ Promotion requires private-lab evidence gates and conformance fixtures.
 
 - [ ] WASM differential conformance
 - [ ] JavaScript adapter conformance
-- [ ] EVM profiles after kernel closure
+- [ ] EVM profiles after N-0 sealing
 
 ## PRIMA
 
@@ -78,13 +85,15 @@ Promotion requires private-lab evidence gates and conformance fixtures.
 - [x] §4 Agent, Supervision, and Recursive Process Semantics — freeze candidate
 - [x] §5 Runtime Profiles, Messaging, Scheduling, and Agent State Persistence — freeze candidate
 - [x] §6 Runtime Conformance and Reference Profile — freeze candidate
-- [ ] §7 Runtime Artifact Identities, Event/Trace Model, and Cross-Runtime Handoff Conformance — current
+- [x] §7 Runtime Artifact Identities, Event/Trace Model, and Cross-Runtime Handoff Conformance — freeze candidate
+- [ ] §8 RP0 Machine-Readable Event/Handoff Corpus and Reference Runtime Execution Evidence — current
 
 ### RP0 reference-runtime implementation target
 
-`PRIMA-RP0-DURABLE-MAILBOX-v1` now defines the first executable runtime claim surface:
+`PRIMA-RP0-DURABLE-MAILBOX-v1` is the first executable runtime claim surface:
 
 - [ ] durable mailbox/store schema
+- [ ] canonical MessageID/EventID/CheckpointID/HandoffID implementation
 - [ ] stable MessageID + dedup
 - [ ] atomic local acknowledgement transaction
 - [ ] AgentState/checkpoint persistence
@@ -95,7 +104,8 @@ Promotion requires private-lab evidence gates and conformance fixtures.
 - [ ] OutcomeReceipt / UnknownOutcome persistence
 - [ ] deterministic mock effect adapter
 - [ ] failure injector F0..F12
-- [ ] machine-readable RP0 golden runtime vectors
+- [ ] machine-readable RP0 runtime/event/handoff vectors
+- [ ] cross-runtime handoff harness
 - [ ] R1 durable-local evidence
 - [ ] R2 failure-recovery evidence
 
