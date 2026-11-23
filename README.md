@@ -19,22 +19,15 @@ https://drive.google.com/drive/folders/1wK7MNoIxU3HvxQ6ciA94D8pvvfhT0juW
 
 GitHub is the public specification, implementation, conformance, and release surface. Frozen GitHub releases should identify the canonical source state from which they were generated.
 
-## Current maturity
+## Current maturity and evidence boundaries
 
-Current N-0 freeze candidates:
+- **DFPL-K N-0:** normative draft §§0–11 and evidence/adjudication §§12–13 are present. Current adjudication is **`HOLD_EVIDENCE_INCOMPLETE`**: N-0 is unsealed and is not N0-RC. A and B have reproduced eight candidate C3 sentinel byte encodings (`DIFFERENTIAL_E3` for that *bounded subset*), not the full C0–C5 conformance campaign. `KernelID` remains withheld.
+- **PRIMA RP0:** §§0–8 orchestration candidates and §§9–10 adjudication/executable-campaign records are present. The F0–F12 vector pack and a private deterministic persisted-state model have evidence, but the real durable Backend A/B campaign remains open. Current adjudication is **`HOLD_HARNESS_INCOMPLETE`**; no R1/R2 claim.
+- **Implementation maturity:** `tools/independent_encoder_b.py` and its source-local tests exercise a limited Python B encoding path. The broader reference implementation remains experimental in a separate private lab, not a verified public full runtime.
 
-1. §0 Semantic Boundary / Conformance Model
-2. §1 Canonical Value Domain and Type System
-3. §2 DFPL-S0 Surface Syntax
-4. §3 Static Semantics / Name Resolution / Phase Typing
+**Next evidence gates:** expand independent A/B differential encoding and full C0–C5 coverage for DFPL-K; implement and reproduce real transactional durable Backend A/B RP0 evidence for PRIMA. See [ROADMAP.md](ROADMAP.md), [DFPL §13](spec/13-executable-evidence-campaign.md), and [PRIMA §10](prima/10-executable-rp0-campaign.md) for the exact open obligations.
 
-**Current NEXT:** §4 Canonical Law IR.
-
-PRIMA currently has §0 Orchestration Boundary as a freeze candidate.
-
-**Current PRIMA NEXT:** §1 PlanIR and Effect Algebra.
-
-The project does not yet claim complete formal proof, complete target conformance, production deployment, or automatic legal force.
+The project does not yet claim complete formal proof, complete target conformance, production deployment, security certification or automatic legal force.
 
 ## Prime separations
 
@@ -48,15 +41,23 @@ The project does not yet claim complete formal proof, complete target conformanc
 
 ## Repository structure
 
-- `spec/` — normative DFPL-K draft
-- `prima/` — orchestration architecture
-- `formal/` — proof/mechanization work
-- `reference/` — reference implementation
-- `targets/` — target/runtime projections
-- `profiles/` — optional integration profiles
-- `conformance/` — golden, differential, property, fuzz and adversarial corpus
-- `examples/` — DFPL examples
-- `docs/` — architecture, manuscript and White Paper surfaces
-- `omega/` — portable LLM bootstrap
+**Present in this public repository:**
 
-See `ROADMAP.md` for the current implementation sequence.
+- `spec/` — DFPL-K normative drafts and evidence gates
+- `prima/` — PRIMA orchestration, RP0 vectors and executable-campaign contracts
+- `formal/` — formalization planning; not a complete mechanized proof
+- `conformance/` — candidate N-0 corpus and scoped vectors
+- `registry/` — candidate tag/domain/Unicode registries and KernelDescriptor
+- `releases/` — **candidate** release manifest; not a sealed release
+- `evidence/` — retained scoped encoder/differential observations
+- `tools/` and `tests/` — independent Python encoder B and its test surface
+- `examples/` and `docs/` — illustrative examples and architecture
+- `.github/workflows/` — bounded encoder B workflow, not whole-project conformance CI
+
+**Architectural destinations, not present source directories:** `reference/`, `targets/`, `profiles/`, `omega/`. Their intended roles do not imply shipped implementations.
+
+## Rights and contribution boundary
+
+A root `LICENSE` file is **not present** in this source-locked snapshot. Public visibility does not itself grant broad copyright reuse rights. Do not infer a software redistribution license, upstream endorsement, or permission to transfer private-lab code. License selection and publication of additional implementation code require their own steward review. See [CONTRIBUTING.md](CONTRIBUTING.md) and [GOVERNANCE.md](GOVERNANCE.md).
+
+See [ROADMAP.md](ROADMAP.md) for the current implementation sequence.
